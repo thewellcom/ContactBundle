@@ -4,6 +4,6 @@
     "type": "thewellcom-bundle",
     "description": "Contact manager",
     "autoload": {
-        "psr-4": { "TheWellComBundle\\": "" }
+        "psr-4": { "TheWellCom\\ContactBundle\\": "" }
     }
 }
