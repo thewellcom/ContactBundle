@@ -1,0 +1,52 @@
+{% for label, flashes in app.session.flashbag.all %}
+    {% for flash in flashes %}
+        <div class="alert alert-{{ label }} success">
+            {{ flash }}
+        </div>
+    {% endfor %}
+{% endfor %}
+
+{{ form_start(form) }}
+    {{ form_errors(form) }}
+{# name #}
+<div>
+    {{ form_label(form.name) }}
+    <div class="errors">{{ form_errors(form.name) }}</div>
+    {{ form_widget(form.name) }}
+</div>
+
+{# firstname #}
+<div>
+    {{ form_label(form.firstname) }}
+    <div class="errors">{{ form_errors(form.firstname) }}</div>
+    {{ form_widget(form.firstname) }}
+</div>
+{# phone #}
+<div>
+    {{ form_label(form.phone) }}
+    <div class="errors">{{ form_errors(form.phone) }}</div>
+    {{ form_widget(form.phone) }}
+</div>
+
+{# email #}
+<div>
+    {{ form_label(form.email) }}
+    <div class="errors">{{ form_errors(form.email) }}</div>
+    {{ form_widget(form.email) }}
+</div>
+
+{# subject #}
+<div>
+    {{ form_label(form.subject) }}
+    <div class="errors">{{ form_errors(form.subject) }}</div>
+    {{ form_widget(form.subject) }}
+</div>
+
+{# message #}
+<div>
+    {{ form_label(form.message) }}
+    <div class="errors">{{ form_errors(form.message) }}</div>
+    {{ form_widget(form.message) }}
+</div>
+
+{{ form_end(form) }}

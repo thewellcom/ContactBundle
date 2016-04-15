@@ -1,0 +1,7 @@
+the_well_com_contact:
+    path:      /contact
+    defaults:  { _controller: TheWellComContactBundle:Contact:getContact }
+
+the_well_com_contact.validate:
+    path:      /contact/validate
+    defaults:  { _controller: TheWellComContactBundle:Contact:validateContact }

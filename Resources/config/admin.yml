@@ -1,0 +1,6 @@
+services:
+    admin.contact:
+        class: TheWellCom\ContactBundle\Admin\ContactAdmin
+        arguments: [~, TheWellCom\ContactBundle\Entity\Contact, ~]
+        tags:
+            - { name: sonata.admin, manager_type: orm, label: Contact }

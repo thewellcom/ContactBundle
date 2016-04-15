@@ -1,0 +1,17 @@
+services:
+    app.form.type.contact:
+        class: "%the_well_com_contact.form_class%"
+        arguments: ["%the_well_com_contact.entity_class%"]
+        tags:
+            - { name: form.type, alias: contact_form }
+
+    app.contact_manager:
+        class: TheWellCom\ContactBundle\Services\ContactManager
+        arguments: ["@templating", "@translator.default", "@mailer", "%the_well_com_contact.mail_to%", "%the_well_com_contact.entity_class%"]
+
+    the_well_com_contact.twig_extension:
+        class: TheWellCom\ContactBundle\Twig\TheWellComContactExtension
+        arguments: ["%the_well_com_contact.site_name%"]
+        public: false
+        tags:
+            - { name: twig.extension }

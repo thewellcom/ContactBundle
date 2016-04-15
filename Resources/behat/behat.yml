@@ -1,0 +1,9 @@
+default:
+    suites:
+        contact:
+            type: symfony_bundle
+            bundle: TheWellComContactBundle
+            contexts:
+                 - ContactContext:
+            filters:
+                tags: @contact
