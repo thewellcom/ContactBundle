@@ -1,7 +1,7 @@
 {
-    "name": "TheWellCom/contact-bundle",
+    "name": "thewellcom/contact-bundle",
     "license": "MIT",
-    "type": "TheWellCom-bundle",
+    "type": "thewellcom-bundle",
     "description": "Contact manager",
     "autoload": {
         "psr-4": { "TheWellComBundle\\": "" }
