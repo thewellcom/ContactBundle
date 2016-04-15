@@ -1,8 +1,25 @@
 {
     "name": "thewellcom/contact-bundle",
     "license": "MIT",
-    "type": "thewellcom-bundle",
-    "description": "Contact manager",
+    "type": "symfony-bundle",
+    "description": "Make a contact form easily with this bundle",
+    "keywords": ["symfony2", "doctrine2", "orm", "form"],
+    "homepage": "https://github.com/twcsamar/ContactBundle",
+    "authors": [
+        {
+            "name": "Stephen Samar",
+            "homepage": "http://www.thewellcom.fr"
+        }
+    ],
+    "require": {
+        "php": ">=5.3.9",
+        "symfony/symfony": "2.7.*",
+        "doctrine/orm": "^2.4.8",
+        "doctrine/doctrine-bundle": "~1.4",
+        "symfony/swiftmailer-bundle": "~2.3",
+        "sonata-project/admin-bundle": "2.3.*",
+        "sonata-project/doctrine-orm-admin-bundle": "2.3.*"
+    },
     "autoload": {
         "psr-4": { "TheWellCom\\ContactBundle\\": "" }
     }
