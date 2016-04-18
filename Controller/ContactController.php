@@ -45,7 +45,7 @@ class ContactController extends Controller
     protected function getContactForm($contact)
     {
         return $this
-            ->createForm($this->get('app.form.type.contact'), $contact, array(
+            ->createForm($this->getParameter("the_well_com_contact.form_class"), $contact, array(
                 'action' => $this->generateUrl('the_well_com_contact.validate')
             ));
     }
