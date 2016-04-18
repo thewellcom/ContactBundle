@@ -4,7 +4,23 @@ TheWellComContactBundle
 Configuration:
 -
 
-In `YourProjectContactBundle.php`:
+In app/AppKernel.php
+
+    class AppKernel extends Kernel
+    {
+        ...
+
+        public function registerBundles()
+        {
+            ...
+            new TheWellCom\ContactBundle\TheWellComContactBundle(),
+            ...
+        }
+    }
+
+You need to create your own ContactBundle.
+
+And in `YourProjectContactBundle.php`:
 
     namespace YourProject\Bundle\ContactBundle;
 
@@ -18,12 +34,39 @@ In `YourProjectContactBundle.php`:
         }
     }
 
-In app/config.config.yml:
+Create the entity Contact:
+
+And in YourProject\Bundle\ContactBundle\Entity\Contact.php:
+
+    <?php
+
+    namespace TM\Bundle\ContactBundle\Entity;
+
+    use Doctrine\ORM\Mapping as ORM;
+    use TheWellCom\ContactBundle\Model\Contact as BaseContact;
+
+    /**
+     * Contact.
+     *
+     * @ORM\Table(name="contact")
+     * @ORM\Entity
+     */
+    class Contact extends BaseContact
+    {
+        ...
+    }
+
+In app/config/config.yml:
 
     the_well_com_contact:
         mail_to: 'xy@domainname.com'
         site_name: 'Your site name'
         entity_class: 'YourProject\Bundle\ContactBundle\Entity\Contact'
+
+In app/config/routing.yml
+
+    the_well_com_contact:
+        resource: "@TheWellComContactBundle/Resources/config/routing.yml"
 
 
 Admin with sonataAdminBundle:
