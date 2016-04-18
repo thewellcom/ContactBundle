@@ -39,7 +39,7 @@ class ContactManager
             $contact->getSubject(),
             $customerEmail,
             $this->mailTo,
-            $this->templating->render('TheWellComContactBundle:Contact:email_confirm.html.twig', array(
+            $this->templating->render('TheWellComContactBundle:Contact:email.html.twig', array(
                 'message' => $message,
                 'contact' => $contact
             ))
@@ -50,7 +50,7 @@ class ContactManager
             $contact->getSubject(),
             $this->mailTo,
             $customerEmail,
-            $this->templating->render('TheWellComContactBundle:Contact:email.html.twig', array(
+            $this->templating->render('TheWellComContactBundle:Contact:email_confirm.html.twig', array(
                 'message' => $message,
                 'contact' => $contact
             ))
