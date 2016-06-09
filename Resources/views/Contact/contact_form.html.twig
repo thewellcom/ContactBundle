@@ -1,0 +1,96 @@
+{{ form_start(form, {'attr': {'class': 'contact-form', 'onsubmit': "return sendContact();"}}) }}
+    <ul class="row">
+        <li class="col-sm-12">
+            <label>
+                {{ form_widget(form.companyName, {'attr': {'class': 'form-control', 'placeholder': 'Entreprise/Organisme *'}}) }}
+                <span class="contact-error error-companyName"></span>
+            </label>
+        </li>
+        <li class="col-sm-12">
+            <label>
+                {{ form_widget(form.civility, {'attr': {'class': 'form-control'}}) }}
+                <span class="contact-error error-civility"></span>
+            </label>
+        </li>
+        <li class="col-sm-12">
+            <label>
+                {{ form_widget(form.name, {'attr': {'class': 'form-control', 'placeholder': 'Nom *'}}) }}
+                <span class="contact-error error-name"></span>
+            </label>
+        </li>
+        <li class="col-sm-12">
+            <label>
+                {{ form_widget(form.firstname, {'attr': {'class': 'form-control', 'placeholder': 'Prénom *'}}) }}
+                <span class="contact-error error-firstname"></span>
+            </label>
+        </li>
+        <li class="col-sm-12">
+            <label>
+                {{ form_widget(form.email, {'attr': {'class': 'form-control', 'placeholder': 'Email *'}}) }}
+                <span class="contact-error error-email"></span>
+            </label>
+        </li>
+        <li class="col-sm-12">
+            <label>
+                {{ form_widget(form.phone, {'attr': {'class': 'form-control', 'placeholder': 'Tél *'}}) }}
+                <span class="contact-error error-phone"></span>
+            </label>
+        </li>
+        <li class="col-sm-12">
+            <label>
+                {{ form_widget(form.subject, {'attr': {'class': 'form-control', 'placeholder': 'Objet *'}}) }}
+                <span class="contact-error error-subject"></span>
+            </label>
+        </li>
+        <li class="col-sm-12">
+            <label>
+                <p class="text-center"><span>Merci d'inscrire votre message, nous le traiterons dans les plus bref délais.</span></p>
+                {{ form_widget(form.message, {'attr': {'class': 'form-control', 'placeholder': 'Message *', 'rows': '5'}}) }}
+                <span class="contact-error error-message"></span>
+            </label>
+        </li>
+        <li class="col-sm-12">
+            <button type="submit" value="submit" class="btn btn-1" id="contact_save" name="contact[save]">Envoyer <i class="fa fa-caret-right"></i></button>
+        </li>
+    </ul>
+    <div style="display: none">
+        {{ form_rest(form) }}
+    </div>
+{{ form_end(form) }}
+
+<script>
+    function sendContact() {
+        var params = $('.contact-form').serialize();
+        $('.contact-error').text('');
+        $.ajax({
+            url: "http://acdmp.local:8888/app_dev.php/contact/validate",
+            data: params,
+            method: 'POST'
+        }).done(function(response) {
+            $('.contact-form').find("input[type=text], textarea").val("");
+            $('.contact-form').prepend("<div class='alert alert-success'> <a href='#' class='close' data-dismiss='alert' aria-label='close'>&times;</a>" + response.message + "</div>");
+            $('.contact-form').find(".alert-success").fadeTo(3000, 500).slideUp(500, function(){
+                $('.contact-form').find(".alert-success").alert('close');
+
+                setTimeout(function() {
+                    $('#modal_contact').modal('hide')
+                }, 1000);
+
+            });
+        }).fail(function(response) {
+            response = jQuery.parseJSON(response.responseText);
+
+            if (response.errors) {
+                var responseErrors = response.errors;
+
+                jQuery.each(responseErrors, function(index, value) {
+                    $('.error-' + index).text(value);
+                });
+
+                return;
+            }
+        });
+
+        return false;
+    }
+</script>

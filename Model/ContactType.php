@@ -3,6 +3,7 @@
 namespace TheWellCom\ContactBundle\Model;
 
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
@@ -29,6 +30,8 @@ abstract class ContactType extends AbstractType
             ->add('subject')
             ->add('email')
             ->add('message')
+            ->add('companyName')
+            ->add('civility', ChoiceType::class, array('placeholder' => 'Civilité *', 'choices' => array('M.' => 'M.', 'Mme.' => 'Mme.', 'Mlle.' => 'Mlle.')))
             ->add('save', SubmitType::class, array('label' => 'contact.send'))
         ;
     }

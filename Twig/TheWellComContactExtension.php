@@ -4,7 +4,6 @@ namespace TheWellCom\ContactBundle\Twig;
 
 class TheWellComContactExtension extends \Twig_Extension
 {
-
     /**
      * @var string
      */

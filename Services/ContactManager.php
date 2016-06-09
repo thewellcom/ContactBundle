@@ -4,7 +4,6 @@ namespace TheWellCom\ContactBundle\Services;
 
 use TheWellCom\ContactBundle\Model\ContactInterface as Contact;
 use Symfony\Bundle\TwigBundle\TwigEngine;
-use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Translation\Translator;
 
 class ContactManager
@@ -41,7 +40,7 @@ class ContactManager
             $this->mailTo,
             $this->templating->render('TheWellComContactBundle:Contact:email.html.twig', array(
                 'message' => $message,
-                'contact' => $contact
+                'contact' => $contact,
             ))
         );
 
@@ -52,7 +51,7 @@ class ContactManager
             $customerEmail,
             $this->templating->render('TheWellComContactBundle:Contact:email_confirm.html.twig', array(
                 'message' => $message,
-                'contact' => $contact
+                'contact' => $contact,
             ))
         );
     }

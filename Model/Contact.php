@@ -44,6 +44,30 @@ abstract class Contact implements ContactInterface
     /**
      * @var string
      *
+     * @ORM\Column(name="company_name", type="string", length=32)
+     * @Assert\NotBlank()
+     * @Assert\Length(
+     *      min=2,
+     *      max= 32,
+     *     minMessage = "Le nom de votre entreprise doit avoir au moins {{ limit }} caractères",
+     *      maxMessage = "Le nom de votre entreprise doit avoir au maximum {{ limit }} caractères"
+     * )
+     * @Assert\Regex("/^\w+/")
+     */
+    protected $companyName;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="civility", type="string", length=32)
+     * @Assert\NotBlank()
+     * @Assert\Regex("/^\w+/")
+     */
+    protected $civility;
+
+    /**
+     * @var string
+     *
      * @ORM\Column(name="phone", type="string", length=10)
      * @Assert\NotBlank()
      * @Assert\Regex("/^(0[1-9])(?:[ _.-]?(\d{2})){4}$/")
@@ -201,5 +225,45 @@ abstract class Contact implements ContactInterface
     public function getMessage()
     {
         return $this->message;
+    }
+
+    /**
+     * @return string
+     */
+    public function getCompanyName()
+    {
+        return $this->companyName;
+    }
+
+    /**
+     * @param string $companyName
+     *
+     * @return Contact
+     */
+    public function setCompanyName($companyName)
+    {
+        $this->companyName = $companyName;
+
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getCivility()
+    {
+        return $this->civility;
+    }
+
+    /**
+     * @param string $civility
+     *
+     * @return Contact
+     */
+    public function setCivility($civility)
+    {
+        $this->civility = $civility;
+
+        return $this;
     }
 }

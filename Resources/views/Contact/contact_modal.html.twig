@@ -1,0 +1,7 @@
+{% import 'TheWellComContactBundle:Contact:modal.html.twig' as modal %}
+
+{% set content %}
+{#{{ include('AppBundle:page:contact_form.html.twig') }}#}
+    {{ render(controller('TheWellComContactBundle:Contact:getContactForm')) }}
+{% endset %}
+{{ modal.modal('modal_contact', "Contact", content) }}
