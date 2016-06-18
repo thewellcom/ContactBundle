@@ -5,3 +5,5 @@ the_well_com_contact:
 the_well_com_contact.validate:
     path:      /contact/validate
     defaults:  { _controller: TheWellComContactBundle:Contact:validateContact }
+    options:
+        expose: true

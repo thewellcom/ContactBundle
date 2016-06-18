@@ -12,7 +12,8 @@
         }
     ],
     "require": {
-        "php": ">=5.3.9"
+        "php": ">=5.3.9",
+        "friendsofsymfony/jsrouting-bundle": "^1.6"
     },
     "autoload": {
         "psr-4": { "TheWellCom\\ContactBundle\\": "" }

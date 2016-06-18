@@ -63,7 +63,7 @@
         var params = $('.contact-form').serialize();
         $('.contact-error').text('');
         $.ajax({
-            url: "http://acdmp.local:8888/app_dev.php/contact/validate",
+            url: Routing.generate('the_well_com_contact.validate'),
             data: params,
             method: 'POST'
         }).done(function(response) {
